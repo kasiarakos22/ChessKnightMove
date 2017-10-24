@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by kasiarakos on 24/10/2017.
  */
-public class Path {
+public class Path implements Comparable<Path> {
 
     private List<Position> visitedPositions;
 
@@ -82,5 +82,14 @@ public class Path {
     @Override
     public int hashCode() {
         return getVisitedPositions() != null ? getVisitedPositions().hashCode() : 0;
+    }
+
+    @Override
+    public int compareTo(Path path) {
+        if(this.getVisitedPositions().size() > path.getVisitedPositions().size()){
+            return 1;
+        }else {
+            return -1;
+        }
     }
 }

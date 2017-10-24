@@ -2,7 +2,9 @@ package com.kasiarakos.model;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -49,6 +51,21 @@ public class PathTest {
 
         assert resultPaths.size() == 2;
         assert resultPaths.contains(expectedPath);
+    }
+
+    @Test
+    public void shouldSortTheList(){
+
+        //when a list contains multiple paths
+        List<Path> list = new ArrayList<>();
+        list.add(new Path(Arrays.asList(new Position(0,0),new Position(2,1),new Position(3,3))));
+        list.add(new Path(Arrays.asList(new Position(0,0),new Position(3,3))));
+        list.add(new Path(Arrays.asList(new Position(0,0))));
+        list.add(new Path(Arrays.asList(new Position(0,0),new Position(2,1),new Position(3,3), new Position(4,5))));
+
+        //should sort the list
+        Collections.sort(list);
+        assert list.get(0).getVisitedPositions().size() == 1;
     }
 
 

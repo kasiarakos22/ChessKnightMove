@@ -30,7 +30,11 @@ public class Main {
 
         List<Path> validPaths = new PathFinder().findValidPathsInSteps(board, 3, start, end);
 
-        validPaths.forEach(System.out::println);
+        if(validPaths.isEmpty()){
+            System.out.println("No solution has been found");
+        }else{
+            System.out.println(validPaths.get(0));
+        }
     }
 
 }
